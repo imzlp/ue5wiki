@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /wiki/
+Allow: /tags/
+Allow: /changelog/
+Allow: /resources/
+
+Disallow: /about/
+Disallow: /wiki/external*
+Disallow: /elinks/

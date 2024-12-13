@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head title="MD Editor">
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../libs/mdeditor/css/editormd.min.css"/>
+        <style>
+            html, body {
+              width: 100%;
+              height: 100%;
+              margin: 0;
+              background: #2c2827;
+            }
+            .editormd {
+              box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="editor">
+            <!-- Tips: Editor.md can auto append a `<textarea>` tag -->
+            <textarea style="display:none;"></textarea>
+        </div>
+        <script src="../libs/mdeditor/js/jquery.min.js"></script>
+        <script src="../libs/mdeditor/js/editormd.js"></script>
+        <script src="../libs/mdeditor/js/default_md.js"></script>
+        <script type="text/javascript">
+          $(function () {
+            var content = window.localStorage.getItem("KEY_MD_EDITOR_CONTENT");
+            content = content ? content : default_md;
+            window.md_base_url = window.localStorage.getItem("KEY_MD_EDITOR_BASE_URL");
+            window.md_editor = editormd("editor", {
+              width: "100%",
+              height: "98%",
+              theme: 'light',
+              emoji: false,
+              editorTheme: 'pastel-on-light',
+              previewTheme: 'light',
+              watch: false,
+              markdown: content || '',     // dynamic set Markdown text
+              path: "../libs/mdeditor/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
+              toolbarIcons: function() {
+                var icons = editormd.toolbarModes.full;
+                icons = icons.filter(function (i) {return !['fullscreen', 'preview', 'emoji','html-entities','goto-line','pagebreak','help','info','ucwords','uppercase','lowercase'].includes(i);});
+                icons.push('load_md');
+                icons.push('save_md');
+                return icons;
+              },
+              toolbarCustomIcons : {
+                load_md: '<input type="file" id="my_file" accept=".md" onchange="md_file_changed()" style="display: none;"><li><a href="javascript:#" onclick="load_md_file()" title="load md" unselectable="on"><i class="fa fa-upload" name="load_md" unselectable="on"></i></a></li>',
+                save_md: '<input type="file" id="save_md" accept=".md" style="display: none;"><li><a href="javascript:#" onclick="save_md_file()" title="save md" unselectable="on"><i class="fa fa-save" name="save_md" unselectable="on"></i></a></li>',
+              },
+              lang: {
+                toolbar: {
+                  load_md : "上传文件",
+                  save_md : "保存文件",
+                }
+              },
+            });
+
+            async function writefile(content)
+            {
+                const handle = await self.showSaveFilePicker({
+                  suggestedName: 'Markdown.md',
+                  types: [{
+                    description: 'Markdown',
+                    accept: {
+                      'text/markdown': ['.md'],
+                    },
+                  }],
+                }).then(async(handle) => {
+                  console.log(handle)
+                  var file_handle = await handle.createWritable().then(file_handle => {
+                    file_handle.write(content)
+                    file_handle.close()
+                  })
+                });
+                
+            }
+
+             window.save_md_file = function() {
+                writefile(window.md_editor.cm.getValue())
+             }
+
+
+            window.load_md_file = function () {
+              $("#my_file").click();
+            }
+            window.md_file_changed = function () {
+              console.log("--------------")
+              var file = document.getElementById("my_file").files[0];
+              var reader = new FileReader();
+              reader.readAsText(file, "utf-8");
+              reader.onload = function (e) {
+                window.md_base_url = $("#md_base_url").val();
+                var fileText = e.target.result;
+                window.md_editor.cm.setValue(fileText);
+              }
+            }
+            window.md_base_url_changed = function () {
+              window.md_base_url = $("#md_base_url").val();
+              window.localStorage.setItem("KEY_MD_EDITOR_BASE_URL", window.md_base_url);
+            }
+            setInterval(function () {
+              window.localStorage.setItem("KEY_MD_EDITOR_CONTENT", window.md_editor.cm.getValue());
+            }, 1000 * 10);
+          });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>虚幻社区知识库</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ue5wiki.com/"/>
+  <updated>2024-12-13T11:25:07.056Z</updated>
+  <id>https://ue5wiki.com/</id>
+  
+  <author>
+    <name>lipengzha</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UnrealEngine 音频渲染：以 IOS 为例源码分析</title>
+    <link href="https://ue5wiki.com/wiki/external1602067166/"/>
+    <id>https://ue5wiki.com/wiki/external1602067166/</id>
+    <published>2024-12-10T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://winterpu.github.io/post/dev/unreal_engine/unrealengine%E9%9F%B3%E9%A2%91%E6%B8%B2%E6%9F%93-%E4%BB%A5ios%E4%B8%BA%E4%BE%8B%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/unreal-engine-%E9%9F%B3%E9%A2%91%E6%B8%B2%E6%9F%93---%E4%BB%A5-ios-%E4%B8%BA%E4%BE%8B-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">UnrealEngine 音频渲染：以 IOS 为例源码分析 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://winterpu.github.io/post/dev/unreal_engine/unrealengine%E9%9F%B3%E9%A2%91%E6%B8%B2%E6%9F%93-%E4%BB
+      
+    
+    </summary>
+    
+      <category term="AudioSystem" scheme="https://ue5wiki.com/categories/AudioSystem/"/>
+    
+      <category term="IOS" scheme="https://ue5wiki.com/categories/AudioSystem/IOS/"/>
+    
+    
+      <category term="IOS" scheme="https://ue5wiki.com/tags/IOS/"/>
+    
+      <category term="AudioSystem" scheme="https://ue5wiki.com/tags/AudioSystem/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UE 热更新：一次资源异常的故障分析</title>
+    <link href="https://ue5wiki.com/wiki/external1904963141/"/>
+    <id>https://ue5wiki.com/wiki/external1904963141/</id>
+    <published>2024-10-17T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://imzlp.com/posts/22890/">UE 热更新：一次资源异常的故障分析 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://imzlp.com/posts/22890/&quot;&gt;UE 热更新：一次资源异常的故障分析 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bilicard.c
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="工具" scheme="https://ue5wiki.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="HotPatcher" scheme="https://ue5wiki.com/tags/HotPatcher/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>target.cs 中检测是否是源码版引擎</title>
+    <link href="https://ue5wiki.com/wiki/3d4f2054/"/>
+    <id>https://ue5wiki.com/wiki/3d4f2054/</id>
+    <published>2024-05-22T14:32:01.000Z</published>
+    <updated>2024-12-13T11:24:40.816Z</updated>
+    
+    <content type="html"><![CDATA[<p>可以从 <code>TargetRules</code> 中使用 <code>bIsEngineInstalled</code> 来检查。</p><p>它调用的是 <code>UnrealBuildTool.IsEngineInstalled()</code>，检测的也是<code>Engine/Build/InstalledBuild.txt</code> 文件是否存在。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/// &lt;summary&gt;</span><br><span class="line">/// Expose a setting for whether or not the engine is installed</span><br><span class="line">/// &lt;/summary&gt;</span><br><span class="line">/// &lt;returns&gt;Flag for whether the engine is installed&lt;/returns&gt;</span><br><span class="line">public bool bIsEngineInstalled</span><br><span class="line">&#123;</span><br><span class="line">get &#123; return UnrealBuildTool.IsEngineInstalled(); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 UE4 与 5 中还有些区别，在 UE4 中调用的是 <code>UnrealBuildTool.IsEngineInstalled()</code>，定义在<code>UnrealBuildTool.cs</code>。<br> 在 UE5 中，调用的是 <code>Unreal.IsEngineInstalled()</code> 定义在<code>Unreal.cs</code>。</p><figure class="highlight csharp"><figcaption><span>UnrealBuildTool.cs or Unreal.cs(UE5)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> Returns true if UnrealBuildTool is running using installed Engine components</span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;returns&gt;</span>True if running using installed Engine components<span class="doctag">&lt;/returns&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">public</span> <span class="built_in">bool</span> <span class="title">IsEngineInstalled</span>(<span class="params"></span>)</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (!bIsEngineInstalled.HasValue)</span><br><span class="line">&#123;</span><br><span class="line">bIsEngineInstalled = FileReference.Exists(FileReference.Combine(EngineDirectory, <span class="string">&quot;Build&quot;</span>, <span class="string">&quot;InstalledBuild.txt&quot;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> bIsEngineInstalled.Value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;可以从 &lt;code&gt;TargetRules&lt;/code&gt; 中使用 &lt;code&gt;bIsEngineInstalled&lt;/code&gt; 来检查。&lt;/p&gt;
+&lt;p&gt;它调用的是 &lt;code&gt;UnrealBuildTool.IsEngineInstalled()&lt;/code&gt;，检测的也是
+      
+    
+    </summary>
+    
+      <category term="BuildSystem" scheme="https://ue5wiki.com/categories/BuildSystem/"/>
+    
+    
+      <category term="BuildSystem" scheme="https://ue5wiki.com/tags/BuildSystem/"/>
+    
+      <category term="target.cs" scheme="https://ue5wiki.com/tags/target-cs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用 HotPatcher 加速真机资源验证</title>
+    <link href="https://ue5wiki.com/wiki/external1175488168/"/>
+    <id>https://ue5wiki.com/wiki/external1175488168/</id>
+    <published>2024-04-07T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://imzlp.com/posts/76004/"> 利用 HotPatcher 加速真机资源验证 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://imzlp.com/posts/76004/&quot;&gt; 利用 HotPatcher 加速真机资源验证 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bilic
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="工具" scheme="https://ue5wiki.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="HotPatcher" scheme="https://ue5wiki.com/tags/HotPatcher/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开源杂谈：HotPatcher 的开发进展</title>
+    <link href="https://ue5wiki.com/wiki/external1938321099/"/>
+    <id>https://ue5wiki.com/wiki/external1938321099/</id>
+    <published>2024-04-07T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://imzlp.com/posts/16808/"> 开源杂谈：HotPatcher 的开发进展 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://imzlp.com/posts/16808/&quot;&gt; 开源杂谈：HotPatcher 的开发进展 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bilica
+      
+    
+    </summary>
+    
+      <category term="开源项目" scheme="https://ue5wiki.com/categories/%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+      <category term="工具" scheme="https://ue5wiki.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="开源" scheme="https://ue5wiki.com/tags/%E5%BC%80%E6%BA%90/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="HotPatcher" scheme="https://ue5wiki.com/tags/HotPatcher/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20240125 | 还有两周</title>
+    <link href="https://ue5wiki.com/wiki/external1492828848/"/>
+    <id>https://ue5wiki.com/wiki/external1492828848/</id>
+    <published>2024-01-25T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/679761565"> 虚幻周报 20240125 | 还有两周 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/679761565&quot;&gt; 虚幻周报 20240125 | 还有两周 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20240117 | 还有一个月</title>
+    <link href="https://ue5wiki.com/wiki/external1373662196/"/>
+    <id>https://ue5wiki.com/wiki/external1373662196/</id>
+    <published>2024-01-17T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/678297071"> 虚幻周报 20240117 | 还有一个月 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/678297071&quot;&gt; 虚幻周报 20240117 | 还有一个月 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/cs
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20240110 | 录播放送中</title>
+    <link href="https://ue5wiki.com/wiki/external1748984239/"/>
+    <id>https://ue5wiki.com/wiki/external1748984239/</id>
+    <published>2024-01-10T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/677045531"> 虚幻周报 20240110 | 录播放送中 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/677045531&quot;&gt; 虚幻周报 20240110 | 录播放送中 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/cs
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20240131 | 等不及了！</title>
+    <link href="https://ue5wiki.com/wiki/external1419646645/"/>
+    <id>https://ue5wiki.com/wiki/external1419646645/</id>
+    <published>2024-01-10T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/680755913"> 虚幻周报 20240131 | 等不及了！</a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/680755913&quot;&gt; 虚幻周报 20240131 | 等不及了！&lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20231214 | 又一年圆满落幕</title>
+    <link href="https://ue5wiki.com/wiki/external1008930706/"/>
+    <id>https://ue5wiki.com/wiki/external1008930706/</id>
+    <published>2023-12-14T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/672198957"> 虚幻周报 20231214 | 又一年圆满落幕 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/672198957&quot;&gt; 虚幻周报 20231214 | 又一年圆满落幕 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20231122 | 就在下周</title>
+    <link href="https://ue5wiki.com/wiki/external1193697377/"/>
+    <id>https://ue5wiki.com/wiki/external1193697377/</id>
+    <published>2023-11-22T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/668177148"> 虚幻周报 20231122 | 就在下周 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/668177148&quot;&gt; 虚幻周报 20231122 | 就在下周 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20231115 | 最后两周了</title>
+    <link href="https://ue5wiki.com/wiki/external1140781934/"/>
+    <id>https://ue5wiki.com/wiki/external1140781934/</id>
+    <published>2023-11-15T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/666961620"> 虚幻周报 20231115 | 最后两周了 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/666961620&quot;&gt; 虚幻周报 20231115 | 最后两周了 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/cs
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20231101 | 买票要趁早</title>
+    <link href="https://ue5wiki.com/wiki/external1281150757/"/>
+    <id>https://ue5wiki.com/wiki/external1281150757/</id>
+    <published>2023-11-01T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/664499469"> 虚幻周报 20231101 | 买票要趁早 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/664499469&quot;&gt; 虚幻周报 20231101 | 买票要趁早 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/cs
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UE 中利用反射为资产建立属性缓存</title>
+    <link href="https://ue5wiki.com/wiki/external1127223230/"/>
+    <id>https://ue5wiki.com/wiki/external1127223230/</id>
+    <published>2023-10-25T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://imzlp.com/posts/71162/">UE 中利用反射为资产建立属性缓存 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://imzlp.com/posts/71162/&quot;&gt;UE 中利用反射为资产建立属性缓存 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bilicard.cs
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="反射" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/%E5%8F%8D%E5%B0%84/"/>
+    
+    
+      <category term="工具" scheme="https://ue5wiki.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UE 中资源自修正的设计与实现方案</title>
+    <link href="https://ue5wiki.com/wiki/external1110461336/"/>
+    <id>https://ue5wiki.com/wiki/external1110461336/</id>
+    <published>2023-10-18T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://imzlp.com/posts/19901/">UE 中资源自修正的设计与实现方案 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://imzlp.com/posts/19901/&quot;&gt;UE 中资源自修正的设计与实现方案 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bilicard.cs
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="工具" scheme="https://ue5wiki.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20231018 | 许久不见</title>
+    <link href="https://ue5wiki.com/wiki/external1654564541/"/>
+    <id>https://ue5wiki.com/wiki/external1654564541/</id>
+    <published>2023-10-18T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/662004358"> 虚幻周报 20231018 | 许久不见 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/662004358&quot;&gt; 虚幻周报 20231018 | 许久不见 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>UE 插件与工具开发：j2 的设计思路与实现</title>
+    <link href="https://ue5wiki.com/wiki/external1223926132/"/>
+    <id>https://ue5wiki.com/wiki/external1223926132/</id>
+    <published>2023-10-14T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://imzlp.com/posts/86105/">UE 插件与工具开发：j2 的设计思路与实现 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://imzlp.com/posts/86105/&quot;&gt;UE 插件与工具开发：j2 的设计思路与实现 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/bilica
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/categories/%E5%B7%A5%E5%85%B7/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+    
+      <category term="工具" scheme="https://ue5wiki.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="资源管理" scheme="https://ue5wiki.com/tags/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20230927 | UFSH 2023 来了！</title>
+    <link href="https://ue5wiki.com/wiki/external1755970829/"/>
+    <id>https://ue5wiki.com/wiki/external1755970829/</id>
+    <published>2023-09-27T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/658709774"> 虚幻周报 20230927 | UFSH 2023 来了！</a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/658709774&quot;&gt; 虚幻周报 20230927 | UFSH 2023 来了！&lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; hr
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20230913 | 哪里贵了</title>
+    <link href="https://ue5wiki.com/wiki/external1747945058/"/>
+    <id>https://ue5wiki.com/wiki/external1747945058/</id>
+    <published>2023-09-13T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/655981141"> 虚幻周报 20230913 | 哪里贵了 </a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/655981141&quot;&gt; 虚幻周报 20230913 | 哪里贵了 &lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/css
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>虚幻周报 20230907 | UE5.3 发布啦！</title>
+    <link href="https://ue5wiki.com/wiki/external1689737844/"/>
+    <id>https://ue5wiki.com/wiki/external1689737844/</id>
+    <published>2023-09-07T00:00:00.000Z</published>
+    <updated>2024-12-13T11:25:07.056Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本篇文章为外部内容，请点击链接跳转至原站点：<a href="https://zhuanlan.zhihu.com/p/654839088"> 虚幻周报 20230907 | UE5.3 发布啦！</a>。</p><link rel="stylesheet" href="/css/bilicard.css" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本篇文章为外部内容，请点击链接跳转至原站点：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/654839088&quot;&gt; 虚幻周报 20230907 | UE5.3 发布啦！&lt;/a&gt;。&lt;/p&gt;
+&lt;link rel=&quot;stylesheet&quot; href=
+      
+    
+    </summary>
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/categories/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+    
+      <category term="虚幻周报" scheme="https://ue5wiki.com/tags/%E8%99%9A%E5%B9%BB%E5%91%A8%E6%8A%A5/"/>
+    
+  </entry>
+  
+</feed>
